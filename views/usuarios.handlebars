@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/usuariosStyle.css">
+{{#Usuario}}
+<h1 style="text-align: center;">USUARIO: #{{id_usuario}} {{txt_nombre}} {{txt_apellido}}</h1>
+{{/Usuario}}
+<table class="table m-auto" style="max-width: 1080px;">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Dato</th>
+            <th scope="col">Información</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#Usuario}}
+        <tr>
+            <th scope="row">Nombre</th>
+            <td>{{txt_nombre}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Apellido</th>
+            <td>{{txt_apellido}}</td>
+        </tr>
+        <tr>
+            <th scope="row">NRO DOC </th>
+            <td>{{nro_doc}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Dirección Envio </th>
+            <td>{{txt_direccion}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Fecha Nacimiento </th>
+            <td>{{fec_nacimiento}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Email de Contacto </th>
+            <td>{{txt_email}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Rol </th>
+            {{#ifCond sn_admin '==' 1}}
+            <td>
+                <span class="badge badge-success">ADMINISTRADOR</span>
+            </td>
+            {{else}}
+            <td>USUARIO</td>
+            {{/ifCond}}
+        </tr>
+        {{/Usuario}}
+    </tbody>
+</table>

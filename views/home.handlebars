@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/homeStyle.css">
+<section id="banner"></section>
+<div class="main">
+    <section id="categorias">
+        <h2>Categorias</h2>
+        <table>
+            {{#each Categorias}}
+            <tr class="row">
+                <td class="col-md-6">{{txt_desc}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </section>
+    <section id="productos">
+        <h2>Productos</h2>
+        <div class="container page-wrapper">
+            <div class="row">
+                {{#each Productos}}
+                <div class="el-wrapper">
+                    <div class="box-up">
+                        <img class="img" src="{{urlImg}}" alt="">
+                        <div class="img-info">
+                            <div class="info-inner">
+                                <span class="p-name">{{txt_nombre}}</span>
+                            </div>
+                            <div class="a-size">Cantidades Disponibles : <span class="size">{{cant}}</span></div>
+                        </div>
+                    </div>
+                    <div class="box-down">
+                        <div class="h-bg">
+                            <div class="h-bg-inner"></div>
+                        </div>
+                        <a class="cart" href="#">
+                            <span class="price">${{precio}}</span>
+                            <span class="add-to-cart">
+                                <span class="txt">Agregar al Carrito</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</div>

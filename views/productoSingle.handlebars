@@ -1,0 +1,59 @@
+{{#Producto}}
+<h1 style="text-align: center;">PRODUCTO : # {{id_producto}}</h1>
+<table class="table m-auto" style="max-width: 1080px;">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Dato</th>
+            <th scope="col">Detalle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Nombre</th>
+            <td> {{txt_nombre}}</td>
+        </tr>
+        <tr>
+            <th>Categoria</th>
+            <td> {{txt_categoria}}</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td> {{txt_desc}}</td>
+        </tr>
+        <tr>
+            <th>Stock</th>
+            <td> {{stock}}</td>
+        </tr>
+        <tr>
+            <th>Precio</th>
+            <td> $ {{precio}}</td>
+        </tr>
+        <tr>
+            <th>Habilitado</th>
+            <td>
+                {{#ifCond sn_habilitado '==' 1}}
+                <span class="badge badge-success">Habilitado</span>
+                {{else}}
+                <span class="badge badge-danger">Inhabilitado</span>
+                {{/ifCond}}
+            </td>
+        </tr>
+        <tr>
+            <th>Eliminado</th>
+            <td>
+                {{#ifCond sn_eliminado '==' 1}}
+                <span class="badge badge-danger">Eliminado</span>
+                {{else}}
+                <span class="badge badge-success">No Eliminado</span>
+                {{/ifCond}}
+            </td>
+        </tr>
+        <tr>
+            <th>Imagen</th>
+            <td>
+                <img src="{{Url}}" alt="{{txt_nombre}}">
+            </td>
+        </tr>
+    </tbody>
+</table>
+{{/Producto}}
