@@ -11,8 +11,6 @@ require("dotenv").config();
 // ejecutar express
 const app = express();
 
-//Helpers
-
 //fichero de rutas
 const indexRouter = require("./routes/indexRoutes");
 
@@ -34,6 +32,7 @@ app.use(
   })
 );
 
+//Helpers
 var hbs = exphbs.create({
   // Specify helpers which are only registered on this instance.
   helpers: {
