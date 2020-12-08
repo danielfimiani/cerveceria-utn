@@ -8,3 +8,11 @@
 form button:hover {
   cursor: pointer;
 }
+
+.btn-primary {
+  background: #cd9647;
+  border-color: #cd9647;
+}
+.bg-dark {
+  background-color: #312f30 !important;
+}
