@@ -5,7 +5,7 @@ const express = require("express");
 const bodyparser = require("body-parser");
 var exphbs = require("express-handlebars");
 var session = require("express-session");
-//var mysql = require("mysql");
+
 require("dotenv").config();
 
 // ejecutar express
@@ -70,27 +70,14 @@ var hbs = exphbs.create({
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
-//Statics
+//Statics bundles
 app.use(express.static("./public/common"));
+app.use(express.static("./public/js"));
+app.use(express.static("./public/fonts"));
 app.use(express.static("./views/styles"));
 
 //ROUTER
 app.use("/", indexRouter);
-
-//PRUEBA CONEXION BASE DE DATOS
-// var con = mysql.createConnection({
-//   host: process.env.DB_SERVER,
-//   user: process.env.DB_USSER,
-//   password: process.env.DB_PASSWORD,
-//   database: process.env.DB_DB,
-// });
-
-// con.connect(function (err) {
-//   if (err) throw err;
-//   console.log("Connected to Database!");
-// });
-
-//con.end();
 
 //PORT
 const port = process.env.PORT || 5000;
