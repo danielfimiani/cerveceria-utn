@@ -1,99 +1,31 @@
-const productos = [
-  {
-    id_producto: "1",
-    id_categoria: "1",
-    txt_nombre: "martillo",
-    txt_desc: "terrible martillo para martillas",
-    stock: "4",
-    precio: 1600.0,
-    sn_habilitado: "1",
-    sn_eliminado: "0",
-  },
-  {
-    id_producto: "2",
-    id_categoria: "1",
-    txt_nombre: "taladro",
-    txt_desc: "te taladra hasta las ideas del ruido que hace",
-    stock: "25",
-    precio: 11520.0,
-    sn_habilitado: "1",
-    sn_eliminado: "0",
-  },
-  {
-    id_producto: "3",
-    id_categoria: "3",
-    txt_nombre: "teclado",
-    txt_desc: "con lucecitas y todo para que veas en la noche",
-    stock: "6",
-    precio: 6500.0,
-    sn_habilitado: "1",
-    sn_eliminado: "0",
-  },
-  {
-    id_producto: "4",
-    id_categoria: "4",
-    txt_nombre: "kit mesa con 4 sillas",
-    txt_desc:
-      "hermosa(entre comillas) mesa redonda con 4 sillas que le combinan a la perfeccion",
-    stock: "5",
-    precio: 25000.0,
-    sn_habilitado: "1",
-    sn_eliminado: "0",
-  },
-  {
-    id_producto: "5",
-    id_categoria: "3",
-    txt_nombre: "monitor",
-    txt_desc:
-      "monitor de 32 pulgadas capas de mostrar hasta el pelo de la nariz del presentador de youtube",
-    stock: "465",
-    precio: 13000.0,
-    sn_habilitado: "1",
-    sn_eliminado: "0",
-  },
-  {
-    id_producto: "6",
-    id_categoria: "4",
-    txt_nombre: "mesa de television",
-    txt_desc:
-      "ideal para ese monitor de 32 pulgadas capas de mostrar hasta el pelo de la naris del presentador de youtube",
-    stock: "1",
-    precio: 2499.99,
-    sn_habilitado: "1",
-    sn_eliminado: "0",
-  },
-  {
-    id_producto: "8",
-    id_categoria: "2",
-    txt_nombre: "jarron",
-    txt_desc:
-      "ideal para colocar la docena de rosas que te enviaron para san valentin... 🤣",
-    stock: "5",
-    precio: 1499.99,
-    sn_habilitado: "1",
-    sn_eliminado: "0",
-  },
-  {
-    id_producto: "9",
-    id_categoria: "1",
-    txt_nombre: "pela calbes",
-    txt_desc:
-      "te queres hacer el electricista? aca esta la herramienta principal que necessitas",
-    stock: "555",
-    precio: 789.9,
-    sn_habilitado: "1",
-    sn_eliminado: "0",
-  },
-  {
-    id_producto: "10",
-    id_categoria: "2",
-    txt_nombre: "Mantel",
-    txt_desc: "para cuando no tenes ganas de limpiar la mesa",
-    stock: "5",
-    precio: 560.0,
-    sn_habilitado: "0",
-    sn_eliminado: "0",
-  },
-];
+const pool = require("./../utils/bd");
+const T_PRODUCTO = "productos";
 
-module.exports = productos;
+const create = (obj) =>
+  pool
+    .query("INSERT INTO ?? SET ?", [T_PRODUCTO, obj])
+    .then((response) => response)
+    .catch((e) => e);
+
+    const update = ({ idproducto }, {id_categoria,txt_nombre,txt_desc,imp_precio,sn_especial,image,sn_habilitado }) =>
+    pool
+      .query("UPDATE ??  SET id_categoria= ?, txt_nombre= ? , txt_desc = ? , imp_precio = ? ,sn_especial = ? , image = ? , sn_habilitado = ? Where id_producto = ?", [
+        T_PRODUCTO,id_categoria,txt_nombre,txt_desc,imp_precio,sn_especial,image,sn_habilitado,idproducto
+      ]) 
+      .then((result) =>  result)
+      .catch((e) => e);
+
+    const Delete = (id) =>
+    pool
+      .query("DELETE FROM ??  WHERE id_producto = ?", [
+        T_PRODUCTO,id])
+      .then((result) => result)
+      .catch((e) => e);
+
+    const GetEspecialidades = () => pool
+    .query("select txt_nombre, txt_desc, imp_precio, image from productos where sn_especial <> -1")
+    .then((result) => result)
+    .catch((e) => e);
+
+
+module.exports = { create, Delete , update , GetEspecialidades};
