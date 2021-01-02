@@ -112,53 +112,14 @@
             <div class="probootstrap-cell-retro">
                 {{#each Especialidades}}
                 <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                    <div class="image" style="background-image: url(img_square_1.jpg);"></div>
+                    <div class="image" style="background-image: {{image}};"></div>
                     <div class="text text-center">
-                        <h3>Baked Potato Pizza</h3>
-                        <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam.</p>
-                        <p class="price">$20.99</p>
+                        <h3>{{txt_nombre}}</h3>
+                        <p>{{txt_desc}}</p>
+                        <p class="price">{{txt_precio}}</p>
                     </div>
                 </div>
-                <div class="probootstrap-cell reverse probootstrap-animate" data-animate-effect="fadeIn">
-                    <div class="image" style="background-image: url(img_square_2.jpg);"></div>
-                    <div class="text text-center">
-                        <h3>Salted Fried Chicken</h3>
-                        <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam.</p>
-                        <p class="price">$19.99</p>
-                    </div>
-                </div>
-                <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                    <div class="image" style="background-image: url(img_square_3.jpg);"></div>
-                    <div class="text text-center">
-                        <h3>Imported Salmon Steak</h3>
-                        <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam.</p>
-                        <p class="price">$20.99</p>
-                    </div>
-                </div>
-                <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                    <div class="image" style="background-image: url(img_square_4.jpg);"></div>
-                    <div class="text text-center">
-                        <h3>Roast Beef (4 sticks)</h3>
-                        <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam.</p>
-                        <p class="price">$32.99</p>
-                    </div>
-                </div>
-                <div class="probootstrap-cell reverse probootstrap-animate" data-animate-effect="fadeIn">
-                    <div class="image" style="background-image: url(img_square_5.jpg);"></div>
-                    <div class="text text-center">
-                        <h3>Tuna Roast Source</h3>
-                        <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam.</p>
-                        <p class="price">$25.99</p>
-                    </div>
-                </div>
-                <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                    <div class="image" style="background-image: url(img_square_1.jpg);"></div>
-                    <div class="text text-center">
-                        <h3>Fried Potatoes with Garlic</h3>
-                        <p>Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam.</p>
-                        <p class="price">$32.99</p>
-                    </div>
-                </div>
+                {{/each}}
             </div>
         </div>
     </div>
