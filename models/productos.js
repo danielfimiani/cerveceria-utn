@@ -29,20 +29,10 @@ const update = (
     .then((result) => result)
     .catch((e) => e);
 
-const Delete = (id) =>
+const GetEspecialidad = () =>
   pool
-    .query("DELETE FROM ??  WHERE id_producto = ?", [T_PRODUCTO, id])
+    .query("select txt_nombre, txt_desc, imp_precio, image from productos where sn_especial != 0")
     .then((result) => result)
     .catch((e) => e);
 
-const GetEspecialidades = async () => {
-  try {
-    return pool.query(
-      "select txt_nombre, txt_desc, imp_precio, image from productos where sn_especial != 0"
-    );
-  } catch (e) {
-    return e;
-  }
-};
-
-module.exports = { create, Delete, update, GetEspecialidades };
+module.exports = { create, Delete, update, GetEspecialidad };
