@@ -1,5 +1,5 @@
 "use strict";
-
+var logger = require("morgan");
 // requires
 const express = require("express");
 const bodyparser = require("body-parser");
@@ -17,6 +17,7 @@ const app = express();
 const indexRouter = require("./routes/indexRoutes");
 
 // Middlewares
+app.use(logger("dev"));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 const LIFE_TIME = 1000 * 60 * 60 * 2;

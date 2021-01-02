@@ -10,4 +10,6 @@ router.use("/usuarios", require("./usuariosRouter"));
 //ADMIN PRODUCTOS
 router.use("/admin", require("./adminRouter"));
 
+router.use("/productos", require("./productosRouter"));
+
 module.exports = router;
