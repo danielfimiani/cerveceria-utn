@@ -40,5 +40,16 @@ const deleteProducto = async (id) => {
       console.error(e);
     }
   };
+  const GetEspecialidades = async () => {
 
-module.exports = { createProducto, deleteProducto, updateProducto };
+    try {   
+   
+     const repuesta = await  productoMet.GetEspecialidad();
+     return repuesta; // retorna el delete      
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+
+module.exports = { createProducto, deleteProducto, updateProducto,GetEspecialidades };

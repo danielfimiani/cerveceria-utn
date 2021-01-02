@@ -22,10 +22,10 @@ const create = (obj) =>
       .then((result) => result)
       .catch((e) => e);
 
-    const GetEspecialidades = () => pool
-    .query("select txt_nombre, txt_desc, imp_precio, image from productos where sn_especial <> -1")
+    const GetEspecialidad = () => pool
+    .query("select txt_nombre, txt_desc, imp_precio, image from productos where sn_especial != 0")
     .then((result) => result)
     .catch((e) => e);
 
 
-module.exports = { create, Delete , update , GetEspecialidades};
+module.exports = { create, Delete , update , GetEspecialidad};

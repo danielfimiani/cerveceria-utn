@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Productos = require("../models/productos");
+const Productos = require("../services/productos")
 
 router.get("/", function (req, res) {
   res.render("home", {
