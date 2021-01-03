@@ -24,7 +24,8 @@ router.get("/productos", function (req, res) {
 //Login
 router.post("/", function (req, res) { 
   const objProducto = req.body;
-  const objProductoimg = req.file;  
+  const objProductoimg = req.file; 
+   console.log(req.body)
   const id = ServicioProducto.createProducto(objProducto,objProductoimg);
   res.json(id);
 });

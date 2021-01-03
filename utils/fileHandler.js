@@ -7,12 +7,14 @@ const deleteTemp = (file) => fs.unlink(file, (e) => console.log(e));
 // mimetype
 const saveFile = (
   { mimetype, size, path },
-  allowE,
-  destFolder = `./public/images`
+
+  allowE,  destFolder = `./public/images`
 ) => {
   try {
     // mimetype="video/mp4"
+    
     const [type, extension] = mimetype.split("/");
+
     if (!allowE.includes(extension)) throw "Formato incorrecto";
     const uid = uuid(); // creando un id unico :D
     const fileName = `${uid}.${extension}`;

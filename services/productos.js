@@ -8,8 +8,12 @@ const { imgFile } = require("./../utils/fileHandler");
 const createProducto = async (body,file) => {
 
   try {
-     
-    const { insertId } = await  productoMet.create(body); // retorna el insertId
+    console.log(body);
+    // const { insertId } = await  productoMet.create(body ); // retorna el insertId
+    console.log(file);
+    // const uid = imgFile(file); // retorna el name de la imagen
+    // const obj = { id_producto, uid };
+    // const { insertId: idFile } = await createImages(obj);    
     return insertId;
   } catch (e) {
     console.error(e);
