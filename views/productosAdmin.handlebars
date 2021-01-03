@@ -223,10 +223,66 @@
                             <h6 class="m-0 font-weight-bold text-primary">Detalle</h6>
                         </div>
                         <!-- Card Body -->
-                        <div class="card-body"> 
+                        <div class="card-body">
                             <table class="table table-bordered dataTable">
-                                <thead></thead>
-                                <tbody></tbody>
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 57px;">
+                                            ID Producto
+                                        </th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 57px;">
+                                            Nombre
+                                        </th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 57px;">
+                                            Descripciòn
+                                        </th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 57px;">
+                                            Categoria
+                                        </th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 57px;">
+                                            Precio
+                                        </th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 57px;">
+                                            S/N Especial
+                                        </th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 57px;">
+                                            S/N Habilitado
+                                        </th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 57px;">
+                                            Editar
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each Productos}}
+                                    <tr role="row" class="even">
+                                        <td>{{id_producto}}</td>
+                                        <td>{{txt_nombre}}</td>
+                                        <td>{{txt_desc}}</td>
+                                        <td>{{txt_categoria}}</td>
+                                        <td>{{imp_precio}}</td>
+                                        <td>{{sn_especial}}</td>
+                                        <td>{{sn_habilitado}}</td>
+                                        <td><i class="fas fa-pencil"></i></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
                             </table>
                         </div>
                     </div>
