@@ -25,8 +25,9 @@ router.get("/productos/delete/:idproducto", function (req, res) {
 router.post("/productos/update/:idproducto", function (req, res) {
   const idproducto = req.params;
   const body = req.body;
+  const file = req.file;
   console.log(req.body);
-  const rest = ServicioProducto.updateProducto(idproducto, body);
+  const rest = ServicioProducto.updateProducto(idproducto, body, file);
   res.redirect("/admin/productos");
 });
 
