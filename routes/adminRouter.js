@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-// router.use("/", require("./productosRouter"));
-// router.use("/", require("./comprasRouter"));
 router.get("/", (req, res) => {
-  res.render("homeAdmin");
+  res.render("homeAdmin", { layout: "mainAdmin.handlebars" });
+});
+
+router.get("/productos", (req, res) => {
+  res.render("productosAdmin", { layout: "mainAdmin.handlebars" });
 });
 
 module.exports = router;

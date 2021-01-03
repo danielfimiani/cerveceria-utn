@@ -111,14 +111,26 @@
         <div class="row">
             <div class="probootstrap-cell-retro">
                 {{#each Especialidades}}
-                <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                    <div class="image" style="background-image: {{image}};"></div>
-                    <div class="text text-center">
-                        <h3>{{txt_nombre}}</h3>
-                        <p>{{txt_desc}}</p>
-                        <p class="price">{{txt_precio}}</p>
+                {{#ifCond @index '==' '0' }}
+                <div class="half">
+                    {{/ifCond}}
+                    {{#ifCond @index '==' '3' }}
+                    <div class="half">
+                        {{/ifCond}}
+                        <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
+                            <div class="image" style="background-image: url(" {{image}} ");"></div>
+                            <div class="text text-center">
+                                <h3>{{txt_nombre}}</h3>
+                                <p>{{txt_desc}}</p>
+                                <p class="price">${{imp_precio}}</p>
+                            </div>
+                        </div>
+                        {{#ifCond @index '==' '2'}}
                     </div>
+                    {{/ifCond}}
+                    {{#ifCond @index '==' '5'}}
                 </div>
+                {{/ifCond}}
                 {{/each}}
             </div>
         </div>
@@ -248,14 +260,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="people">Cuentas Personas</label>
+                                <label for="people">Cantidad Personas</label>
                                 <div class="form-field">
                                     <i class="icon icon-chevron-down"></i>
                                     <select name="people" id="people" class="form-control">
-                                        <option value="#">1 people</option>
-                                        <option value="#">2 people</option>
-                                        <option value="#">3 people</option>
-                                        <option value="#">4+ people</option>
+                                        <option value="#">1 persona</option>
+                                        <option value="#">2 personas</option>
+                                        <option value="#">3 personas</option>
+                                        <option value="#">4+ personas</option>
                                     </select>
                                 </div>
                             </div>

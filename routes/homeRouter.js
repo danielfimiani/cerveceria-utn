@@ -1,13 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const Productos = require("../services/productos")
+const Productos = require("../models/productos");
 
-router.get("/", function (req, res) {
-  const Especialidades = await Productos.GetEspecialidades();
-  console.log(Especialidades);
+router.get("/", async function (req, res) {
   res.render("home", {
-    Especialidades: Especialidades,
+    Especialidades: await Productos.GetEspecialidades(),
   });
 });
 

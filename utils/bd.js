@@ -13,5 +13,6 @@ let pool = mysql.createPool({
   database: process.env.DB_NAME || "heroku_60c72b60b19b114",
   connectionLimit: 10,
 });
+
 pool.query = util.promisify(pool.query);
 module.exports = pool;
