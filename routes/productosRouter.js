@@ -1,9 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Productos = require("../models/productos");
-const Categoria = require("../models/categorias");
-const ServicioProducto = require("../services/productos")
-
+const ServicioProducto = require("../services/productos");
 
 router.get("/productos", function (req, res) {
   let Usuario = Usuarios.find((Usuario) => Usuario.id_usuario == req.session.userId);
@@ -19,32 +17,23 @@ router.get("/productos", function (req, res) {
     res.redirect("/login");
   }
 });
- 
 
 //Login
-router.post("/", function (req, res) { 
+router.post("/", function (req, res) {
   const objProducto = req.body;
-  const objProductoimg = req.file; 
-   console.log(req.body)
-  const id = ServicioProducto.createProducto(objProducto,objProductoimg);
+  const objProductoimg = req.file;
+  console.log(req.body);
+  const id = ServicioProducto.createProducto(objProducto, objProductoimg);
   res.json(id);
 });
 
-router.post("/update/:idproducto", function (req, res) {
-  const idproducto = req.params
-  const body = req.body
-  const rest = ServicioProducto.updateProducto(idproducto, body);
-  res.json(rest);
-});
-
-const updateProducto = (req, res) =>{    
-  console.log(req)
-  const {idproducto} = req;
+const updateProducto = (req, res) => {
+  console.log(req);
+  const { idproducto } = req;
   console.log(idproducto);
- // ServicioProducto.deleteProducto(idproducto);
+  // ServicioProducto.deleteProducto(idproducto);
   // res.json(repuesta);
-}
-
+};
 
 //router.get("/productos/delete/:idproducto", deleteProducto);
 //router.get("/update/:idproducto", updateProducto);

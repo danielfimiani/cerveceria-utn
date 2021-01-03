@@ -15,11 +15,11 @@ const createImages = ({ id_producto, uid }) =>
 
 const update = (
   { idproducto },
-  { id_categoria, txt_nombre, txt_desc, imp_precio, sn_especial, image, sn_habilitado }
+  { id_categoria, txt_nombre, txt_desc, imp_precio, sn_especial, sn_habilitado }
 ) =>
   pool
     .query(
-      "UPDATE ??  SET id_categoria= ?, txt_nombre= ? , txt_desc = ? , imp_precio = ? ,sn_especial = ? , image = ? , sn_habilitado = ? Where id_producto = ?",
+      "UPDATE ??  SET id_categoria= ?, txt_nombre= ? , txt_desc = ? , imp_precio = ? ,sn_especial = ? , sn_habilitado = ? Where id_producto = ?",
       [
         T_PRODUCTO,
         id_categoria,
@@ -27,7 +27,6 @@ const update = (
         txt_desc,
         imp_precio,
         sn_especial,
-        image,
         sn_habilitado,
         idproducto,
       ]
@@ -41,12 +40,12 @@ const Delete = (id) =>
     .then((result) => result)
     .catch((e) => e);
 
-
-
-    
-    const GetProductoHome  = (snespecial) => pool
+const GetProductoHome = (snespecial) =>
+  pool
     .query("select txt_nombre, txt_desc, imp_precio, image from ?? where sn_especial = ? ", [
-      T_PRODUCTO, snespecial])
+      T_PRODUCTO,
+      snespecial,
+    ])
     .then((result) => result)
     .catch((e) => e);
 
@@ -55,6 +54,7 @@ const GetProductoslist = () =>
     .query(
       `SELECT
           p.id_producto , 
+          c.id_categoria, 
           c.txt_categoria, 
           txt_nombre,
           txt_desc, 
