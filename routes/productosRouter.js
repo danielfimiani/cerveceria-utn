@@ -30,15 +30,6 @@ router.post("/", function (req, res) {
   res.json(id);
 });
 
- 
-
-router.delete("/delete/:idproducto", function (req, res) {
-  const {idproducto} = req.params
-  console.log(idproducto);
-  const rest = ServicioProducto.deleteProducto(idproducto);
-  res.json(rest);
-});
-
 router.post("/update/:idproducto", function (req, res) {
   const idproducto = req.params
   const body = req.body
