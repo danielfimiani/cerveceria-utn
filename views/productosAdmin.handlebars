@@ -176,6 +176,13 @@
                             <input type="number" class="form-control" id="imp_precio" value="{{imp_precio}}"
                                 name="imp_precio">
                         </div>
+
+                        <div class="form-group">
+                            {{#ifCond image '!=' ''}}
+                            <img src="/{{image}}" alt="Imagen" class="rounded w-25">
+                            {{/ifCond}}
+                            <input type="file" class="form-control-file" id="image" name="image">
+                        </div>
                         <div class="form-group">
                             <label for="sn_especial" class="col-form-label">Menú especial:</label>
                             <select name="sn_especial" id="sn_especial" class="form-control">

@@ -26,8 +26,8 @@ const update = (
         txt_nombre,
         txt_desc,
         imp_precio,
-        sn_especial,
-        sn_habilitado,
+        parseInt(sn_especial),
+        parseInt(sn_habilitado),
         idproducto,
       ]
     )
