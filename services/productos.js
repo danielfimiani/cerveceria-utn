@@ -32,12 +32,11 @@ const deleteProducto = async (id) => {
     }
   };
 
-  const updateProducto = async (id, body) => {
+  const updateProducto = async (id, body,file) => {
 
     try {   
-    // const {idproducto} = id;     
-    // const {id_categoria,txt_nombre,txt_desc,imp_precio,sn_especial,image,sn_habilitado} = body;     
-     const { insertId } = await  productoMet.update(id,body);
+      const uid = imgFile(file); // retorna el name de la imagen     
+      const { insertId } = await  productoMet.update(id,body,uid);
      console.log(insertId);
      return insertId; // retorna el delete      
     } catch (e) {

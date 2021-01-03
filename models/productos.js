@@ -15,11 +15,12 @@ const createImages = ({ id_producto, uid }) =>
 
 const update = (
   { idproducto },
-  { id_categoria, txt_nombre, txt_desc, imp_precio, sn_especial, sn_habilitado }
-) =>
+  { id_categoria, txt_nombre, txt_desc, imp_precio, sn_especial, sn_habilitado },
+  uid
+  ) =>
   pool
     .query(
-      "UPDATE ??  SET id_categoria= ?, txt_nombre= ? , txt_desc = ? , imp_precio = ? ,sn_especial = ? , sn_habilitado = ? Where id_producto = ?",
+      "UPDATE ??  SET id_categoria= ?, txt_nombre= ? , txt_desc = ? , imp_precio = ? ,sn_especial = ? , sn_habilitado = ? , image = ?  Where id_producto = ?",
       [
         T_PRODUCTO,
         id_categoria,
@@ -29,6 +30,7 @@ const update = (
         parseInt(sn_especial),
         parseInt(sn_habilitado),
         idproducto,
+        uid
       ]
     )
     .then((result) => result)
