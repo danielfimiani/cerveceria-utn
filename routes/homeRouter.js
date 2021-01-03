@@ -3,17 +3,19 @@ const router = express.Router();
 
 const Productos = require("../models/productos")
 
-router.get("/", function (req, res) {
+router.get("/", async function (req, res) {
   res.render("home", {
-    Especialidades: Productos.GetProducto(1),
+    Especialidades: await Productos.GetProductoHome(1),
   });
 });
 
-
-router.get("/", function (req, res) {
+router.get("/", async function (req, res) {
   res.render("home", {
-    menu: Productos.GetProducto(0),
+    menu: await Productos.GetProductoHome(0),
   });
 });
+
 
 module.exports = router;
+
+ 

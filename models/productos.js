@@ -30,11 +30,18 @@ const create = (obj,uid) =>
       .then((result) => result)
       .catch((e) => e);
 
-    const GetProducto = (snespecial) => pool
-    .query("select txt_nombre, txt_desc, imp_precio, image from productos where ((sn_especial = ? and ? is not null ) or ( ? is null))", [
-    snespecial,snespecial,snespecial])
+    const GetProductoHome = (snespecial) => pool
+    .query("select txt_nombre, txt_desc, imp_precio, image from productos where sn_especial = ? ", [
+    snespecial])
     .then((result) => result)
     .catch((e) =>  e);
 
+
+    const GetProductoslist = () => pool
+    .query("select   c.txt_categoria,txt_nombre,txt_desc, imp_precio,sn_especial,image,case when p.sn_habilitado= 1 then 'SI' else 'NO' end as 'sn_habilitado',p.ts_create, p.ts_update from productos  p inner join categorias c on p.id_categoria = c.id_categoria")
+    .then((result) => result)
+    .catch((e) =>  e);
+
+
     
-module.exports = { create, Delete , update , GetProducto};
+module.exports = { create, Delete , update , GetProductoHome};

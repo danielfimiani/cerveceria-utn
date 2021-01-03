@@ -77,10 +77,10 @@ app.use(express.static("./public/js"));
 app.use(express.static("./public/fonts"));
 app.use(express.static("./views/styles"));
 
-//ROUTER
+//Router
 app.use("/", indexRouter);
 
-//PORT
+//Port
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
