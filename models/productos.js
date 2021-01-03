@@ -41,11 +41,12 @@ const Delete = (id) =>
     .then((result) => result)
     .catch((e) => e);
 
-const GetProductoHome = (snespecial) =>
-  pool
-    .query("select txt_nombre, txt_desc, imp_precio, image from productos where sn_especial = ? ", [
-      snespecial,
-    ])
+
+
+    
+    const GetProductoHome  = (snespecial) => pool
+    .query("select txt_nombre, txt_desc, imp_precio, image from ?? where sn_especial = ? ", [
+      T_PRODUCTO, snespecial])
     .then((result) => result)
     .catch((e) => e);
 

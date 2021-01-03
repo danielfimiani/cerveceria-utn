@@ -1,20 +1,10 @@
-const categories = [
-  {
-    id_categoria: "1",
-    txt_desc: "Herramientas",
-  },
-  {
-    id_categoria: "2",
-    txt_desc: "Bazar",
-  },
-  {
-    id_categoria: "3",
-    txt_desc: "Electronica",
-  },
-  {
-    id_categoria: "4",
-    txt_desc: "Hogar",
-  },
-];
+const pool = require("./../utils/bd");
+const T_CATEGORIA = "categorias";
 
-module.exports = categories;
+const GetCategoriaslist = () =>
+  pool
+    .query("select txt_categoria, sn_habilitado from ?? ", [T_CATEGORIA])
+    .then((result) => result)
+    .catch((e) => e);
+
+module.exports = { GetCategoriaslist };

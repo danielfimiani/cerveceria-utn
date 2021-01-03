@@ -9,11 +9,11 @@ const createProducto = async (body,file) => {
 
   try {
     console.log(body);
-    // const { insertId } = await  productoMet.create(body ); // retorna el insertId
+     const { insertId } = await  productoMet.create(body ); // retorna el insertId
     console.log(file);
-    // const uid = imgFile(file); // retorna el name de la imagen
-    // const obj = { id_producto, uid };
-    // const { insertId: idFile } = await createImages(obj);    
+     const uid = imgFile(file); // retorna el name de la imagen
+     const obj = { id_producto, uid };
+     const { insertId: idFile } = await createImages(obj);    
     return insertId;
   } catch (e) {
     console.error(e);
@@ -45,6 +45,10 @@ const deleteProducto = async (id) => {
     }
   };
 
+ 
 
 
-module.exports = { createProducto, deleteProducto, updateProducto };
+
+
+module.exports = { createProducto, deleteProducto, updateProducto  };
+           
