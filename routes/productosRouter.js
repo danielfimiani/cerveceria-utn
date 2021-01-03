@@ -18,7 +18,6 @@ router.get("/productos", function (req, res) {
   }
 });
 
-//Login
 router.post("/", function (req, res) {
   const objProducto = req.body;
   const objProductoimg = req.file;

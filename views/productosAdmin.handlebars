@@ -18,7 +18,8 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Detalle</h6>
-                    <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm m-right">+ Agregar</a>
+                    <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm m-right" data-toggle="modal"
+                        data-target="#newModal">+ Agregar</a>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -223,4 +224,62 @@
     </div>
     {{/each}}
     <!-- Fin Editar  Modal-->
+
+    <!-- Nuevo Modal-->
+    <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="/admin/productos/create">
+                        <div class="form-group">
+                            <label for="txt_nombre" class="col-form-label">Nombre: </label>
+                            <input type="text" class="form-control" id="txt_nombre" name="txt_nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_desct" class="col-form-label">Descripción:</label>
+                            <textarea class="form-control" id="txt_desc" name="txt_desc" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_categoria" class="col-form-label">Categoria:</label>
+                            <select name="id_categoria" id="id_categoria" class="form-control" required>
+                                {{#each Categorias}}
+                                <option value="{{id_categoria}}">{{txt_categoria}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="imp_precio" class="col-form-label">Precio:</label>
+                            <input type="number" class="form-control" id="imp_precio" name="imp_precio" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" id="image" name="image">
+                        </div>
+                        <div class="form-group">
+                            <label for="sn_especial" class="col-form-label">Menú especial:</label>
+                            <select name="sn_especial" id="sn_especial" class="form-control">
+                                <option value="1">SI</option>
+                                <option value="0">NO</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sn_habilitado" class="col-form-label">Habilitado:</label>
+                            <select name="sn_habilitado" id="sn_habilitado" class="form-control">
+                                <option value="1">SI</option>
+                                <option value="0">NO</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Nuevo Modal-->
 </div>
