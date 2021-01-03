@@ -118,7 +118,7 @@
                     <div class="half">
                         {{/ifCond}}
                         <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                            <div class="image" style="background-image: url(" {{image}} ");"></div>
+                            <div class="image" style="background-image: url({{image}});"></div>
                             <div class="text text-center">
                                 <h3>{{txt_nombre}}</h3>
                                 <p>{{txt_desc}}</p>
@@ -154,86 +154,21 @@
 <section class="probootstrap-section probootstrap-bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+       {{#each MenuHome}} 
+            <div class="col-md-6">               
                 <ul class="menus">
-                    <li>
-                        <figure class="image"><img src="img_square_1.jpg"
-                                alt="Free Bootstrap Template by ProBootstrap.com"></figure>
+                    <li >
+                        <figure class="image"><img src={{image}} alt="Free Bootstrap Template by ProBootstrap.com"></figure>
                         <div class="text">
-                            <span class="price">$22.99</span>
-                            <h3>Fried Potatoes with Garlic</h3>
-                            <p>Crab / Potatoes / Rice</p>
+                            <span class="price">${{imp_precio}}</span>
+                            <h3>{{txt_desc}}</h3>
+                            <p>{{txt_desc}}</p>
                         </div>
-                    </li>
-                    <li>
-                        <figure class="image"><img src="img_square_2.jpg"
-                                alt="Free Bootstrap Template by ProBootstrap.com"></figure>
-                        <div class="text">
-                            <span class="price">$22.99</span>
-                            <h3>Tuna Roast Source</h3>
-                            <p>Crab / Potatoes / Rice</p>
-                        </div>
-                    </li>
-                    <li>
-                        <figure class="image"><img src="img_square_3.jpg"
-                                alt="Free Bootstrap Template by ProBootstrap.com"></figure>
-                        <div class="text">
-                            <span class="price">$22.99</span>
-                            <h3>Roast Beef (4 sticks)</h3>
-                            <p>Crab / Potatoes / Rice</p>
-                        </div>
-                    </li>
-                    <li>
-                        <figure class="image"><img src="img_square_4.jpg"
-                                alt="Free Bootstrap Template by ProBootstrap.com"></figure>
-                        <div class="text">
-                            <span class="price">$22.99</span>
-                            <h3>Salted Fried Chicken</h3>
-                            <p>Crab / Potatoes / Rice</p>
-                        </div>
-                    </li>
+                    </li>                
                 </ul>
             </div>
-            <div class="col-md-6">
-                <ul class="menus">
-                    <li>
-                        <figure class="image"><img src="img_square_5.jpg"
-                                alt="Free Bootstrap Template by ProBootstrap.com"></figure>
-                        <div class="text">
-                            <span class="price">$22.99</span>
-                            <h3>Baked Potato Pizza</h3>
-                            <p>Crab / Potatoes / Rice</p>
-                        </div>
-                    </li>
-                    <li>
-                        <figure class="image"><img src="img_square_1.jpg"
-                                alt="Free Bootstrap Template by ProBootstrap.com"></figure>
-                        <div class="text">
-                            <span class="price">$22.99</span>
-                            <h3>Fried Potatoes with Garlic</h3>
-                            <p>Crab / Potatoes / Rice</p>
-                        </div>
-                    </li>
-                    <li>
-                        <figure class="image"><img src="img_square_2.jpg"
-                                alt="Free Bootstrap Template by ProBootstrap.com"></figure>
-                        <div class="text">
-                            <span class="price">$22.99</span>
-                            <h3>Salted Fried Chicken</h3>
-                            <p>Crab / Potatoes / Rice</p>
-                        </div>
-                    </li>
-                    <li>
-                        <figure class="image"><img src="img_square_3.jpg"
-                                alt="Free Bootstrap Template by ProBootstrap.com"></figure>
-                        <div class="text">
-                            <span class="price">$22.99</span>
-                            <h3>Tuna Roast Source</h3>
-                            <p>Crab / Potatoes / Rice</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+  {{/each}}
+ 
         </div>
     </div>
 </section>
