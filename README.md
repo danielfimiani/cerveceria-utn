@@ -17,10 +17,12 @@ $ npm install
 $ npm start
 ```
 
+<img src=./public/images/imageReadme1.png alt="img">
+
 La magia ocurre cuando accedemos al menú administrador desde el footer de la pagina.
 (El icono de la izquierda)
 
-<img src=./public/images/imageReadme.png alt="img">
+<img src=./public/images/imageReadme2.png alt="img">
 
 ## Derechos
 
