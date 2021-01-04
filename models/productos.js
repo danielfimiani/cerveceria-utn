@@ -43,7 +43,7 @@ const Delete = (id) =>
 
 const GetProductoHome = (snespecial) =>
   pool
-    .query("select txt_nombre, txt_desc, imp_precio, image from ?? where sn_especial = ? ", [
+    .query("select txt_nombre, txt_desc, imp_precio, image from ?? where sn_especial = ? and  sn_habilitado != 0", [
       T_PRODUCTO,
       snespecial,
     ])
@@ -76,7 +76,7 @@ const GetProductoslist = () =>
           p.ts_create, 
           p.ts_update 
       from productos p 
-      inner join categorias c on p.id_categoria = c.id_categoria
+      inner join categorias c on p.id_categoria = c.id_categoria      
       `
     )
     .then((result) => result)
