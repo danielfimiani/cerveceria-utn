@@ -1,5 +1,4 @@
 const express = require("express");
-const { parse } = require("uuid");
 const router = express.Router();
 const Categorias = require("../models/categorias");
 
@@ -21,7 +20,7 @@ router.post("/create", function (req, res) {
 //BAJA
 router.get("/delete/:idcategoria", function (req, res) {
   const { idcategoria } = req.params;
-  const rest = Categorias.delete(idcategoria);
+  const rest = Categorias.Delete(idcategoria);
   res.redirect("/admin/categorias");
 });
 
