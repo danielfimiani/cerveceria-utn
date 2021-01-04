@@ -18,12 +18,12 @@ npm start
 ```
 
 La magia ocurre cuando accedemos al menú administrador desde el footer de la pagina.
-<img src=public/images/readmeimg.png alt="img">
+<img src=./public/images/readmeimg.png alt="img">
 
 ## Derechos
 
 Este repositorio es para un proyecto de la Facultad Regional de Buenos Aires UTN.
-No se trada de un comercio real.
+No se trata de un comercio real o marca registrada.
 @Copy 2020
 
 ## Licencia
