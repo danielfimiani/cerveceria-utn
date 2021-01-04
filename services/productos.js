@@ -35,10 +35,12 @@ const deleteProducto = async (id) => {
   const updateProducto = async (id, body,file) => {
 
     try {   
-      const uid = imgFile(file); // retorna el name de la imagen     
+
+    
+      const uid = imgFile(file); // retorna el name de la imagen    
+      
       const { insertId } = await  productoMet.update(id,body,uid);
-     console.log(insertId);
-     return insertId; // retorna el delete      
+       return insertId; // retorna el delete      
     } catch (e) {
       console.error(e);
     }

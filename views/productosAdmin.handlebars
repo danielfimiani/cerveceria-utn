@@ -149,7 +149,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/admin/productos/update/{{id_producto}}">
+                    <form method="POST" action="/admin/productos/update/{{id_producto}} " enctype = "multipart/form-data">
                         <div class="form-group">
                             <label for="txt_nombre" class="col-form-label">Nombre: </label>
                             <input type="text" class="form-control" id="txt_nombre" value="{{txt_nombre}}"

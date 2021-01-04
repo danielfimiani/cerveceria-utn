@@ -29,8 +29,9 @@ const update = (
         imp_precio,
         parseInt(sn_especial),
         parseInt(sn_habilitado),
-        idproducto,
-        uid
+        uid,
+        idproducto
+        
       ]
     )
     .then((result) => result)
