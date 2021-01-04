@@ -21,9 +21,7 @@ const createProducto = async (body,file) => {
 };
 
 const deleteProducto = async (id) => {
-
     try {   
-    
      const repuesta = await  productoMet.Delete(id);
      console.log(repuesta);
      return repuesta; // retorna el delete      

@@ -154,21 +154,22 @@
 <section class="probootstrap-section probootstrap-bg-white">
     <div class="container">
         <div class="row">
-       {{#each MenuHome}} 
-            <div class="col-md-6">               
+            {{#each MenuHome}}
+            <div class="col-md-6">
                 <ul class="menus">
-                    <li >
-                        <figure class="image"><img src={{image}} alt="Free Bootstrap Template by ProBootstrap.com"></figure>
+                    <li>
+                        <figure class="image"><img src={{image}} alt="Free Bootstrap Template by ProBootstrap.com">
+                        </figure>
                         <div class="text">
                             <span class="price">${{imp_precio}}</span>
                             <h3>{{txt_desc}}</h3>
                             <p>{{txt_desc}}</p>
                         </div>
-                    </li>                
+                    </li>
                 </ul>
             </div>
-  {{/each}}
- 
+            {{/each}}
+
         </div>
     </div>
 </section>
@@ -191,7 +192,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 probootstrap-animate">
-                <form method="post" class="probootstrap-form">
+                <form method="POST" class="probootstrap-form" action="/reservas">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -199,10 +200,10 @@
                                 <div class="form-field">
                                     <i class="icon icon-chevron-down"></i>
                                     <select name="people" id="people" class="form-control">
-                                        <option value="#">1 persona</option>
-                                        <option value="#">2 personas</option>
-                                        <option value="#">3 personas</option>
-                                        <option value="#">4+ personas</option>
+                                        <option value="1">1 persona</option>
+                                        <option value="2">2 personas</option>
+                                        <option value="3">3 personas</option>
+                                        <option value="4">4+ personas</option>
                                     </select>
                                 </div>
                             </div>
@@ -212,7 +213,7 @@
                                 <label for="date">Fecha</label>
                                 <div class="form-field">
                                     <i class="icon icon-calendar"></i>
-                                    <input type="text" id="date" class="form-control">
+                                    <input type="text" id="date" name="date" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -221,7 +222,7 @@
                                 <label for="time">Horario</label>
                                 <div class="form-field">
                                     <i class="icon icon-clock"></i>
-                                    <input type="text" id="time" class="form-control">
+                                    <input type="text" id="time" class="form-control" name="time">
                                 </div>
                             </div>
                         </div>
@@ -233,7 +234,8 @@
                                 <label for="name">Nombre</label>
                                 <div class="form-field">
                                     <i class="icon icon-user2"></i>
-                                    <input type="text" id="name" class="form-control" placeholder="Your full name">
+                                    <input type="text" id="name" name="name" class="form-control"
+                                        placeholder="Your full name">
                                 </div>
                             </div>
                         </div>
@@ -242,7 +244,8 @@
                                 <label for="email">Email</label>
                                 <div class="form-field">
                                     <i class="icon icon-mail"></i>
-                                    <input type="text" id="email" class="form-control" placeholder="Your email address">
+                                    <input type="text" id="email" name="email" class="form-control"
+                                        placeholder="Your email address">
                                 </div>
                             </div>
                         </div>
