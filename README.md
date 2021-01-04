@@ -7,7 +7,7 @@ Bienvenido al repositorio del Proyecto UTN Canelones Resto Bar
 Usar el manejador de paquetes npm
 
 ```bash
-git clone https://github.com/danielfimiani/cerveceria-utn.git
+git clone [URL](https://github.com/danielfimiani/cerveceria-utn.git)
 npm install
 ```
 
