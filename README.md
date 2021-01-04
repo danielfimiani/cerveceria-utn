@@ -18,7 +18,7 @@ npm start
 ```
 
 La magia ocurre cuando accedemos al menú administrador desde el footer de la pagina.
-<img src=./public/images/readmeimg.png alt="img">
+<img src=./public/images/imageReadme.png alt="img">
 
 ## Derechos
 
