@@ -3,6 +3,7 @@ const { parse } = require("uuid");
 const router = express.Router();
 const Categorias = require("../models/categorias");
 
+//Lista
 router.get("/", async (req, res) => {
   res.render("categoriasAdmin", {
     layout: "mainAdmin.handlebars",
@@ -10,6 +11,21 @@ router.get("/", async (req, res) => {
   });
 });
 
+//ALTA
+router.post("/create", function (req, res) {
+  const objCategoria = req.body;
+  const id = Categorias.create(objCategoria);
+  res.redirect("/admin/categorias");
+});
+
+//BAJA
+router.get("/delete/:idcategoria", function (req, res) {
+  const { idcategoria } = req.params;
+  const rest = Categorias.delete(idcategoria);
+  res.redirect("/admin/categorias");
+});
+
+//Modificacion
 router.post("/update/:idcategoria", function (req, res) {
   const { idcategoria } = req.params;
   const Categoria = req.body;
@@ -18,9 +34,4 @@ router.post("/update/:idcategoria", function (req, res) {
   res.redirect("/admin/categorias");
 });
 
-router.get("/delete/:idcategoria", function (req, res) {
-  const { idcategoria } = req.params;
-  const rest = Categorias.delete(idcategoria);
-  res.redirect("/admin/categorias");
-});
 module.exports = router;
