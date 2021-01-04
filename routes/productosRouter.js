@@ -3,6 +3,9 @@ const router = express.Router();
 const Productos = require("../models/productos");
 const Categorias = require("../models/categorias");
 const ServicioProducto = require("../services/productos");
+const multer = require("multer"); // npm i multer
+const config = { dest: `./public/tmp` };
+const upload = multer(config);
 
 router.get("/", async (req, res) => {
   res.render("productosAdmin", {
@@ -18,23 +21,23 @@ router.get("/delete/:idproducto", function (req, res) {
   res.redirect("/admin/productos");
 });
 
-router.post("/update/:idproducto", function (req, res) {
-  const { idproducto } = req.params;
+router.post("/update/:idproducto",  upload.single("image"),function (req, res) {
+  const {idproducto} = req.params;
   const objProducto = req.body;
   objProducto.sn_habilitado = parseInt(objProducto.sn_habilitado);
-  objProducto.sn_especial = parseInt(objProducto.sn_especial);
-  const file = req.file;
-  console.log(req.body);
+  objProducto.sn_especial = parseInt(objProducto.sn_especial);  
+  const file = req.file;  
   const rest = ServicioProducto.updateProducto(idproducto, objProducto, file);
   res.redirect("/admin/productos");
 });
 
-router.post("/create", function (req, res) {
+router.post("/create", upload.single("image"), function (req, res) {
   const objProducto = req.body;
   objProducto.sn_habilitado = parseInt(objProducto.sn_habilitado);
   objProducto.sn_especial = parseInt(objProducto.sn_especial);
-  const objProductoimg = req.file;
-  const id = ServicioProducto.createProducto(objProducto, objProductoimg);
+  const file = req.file;
+  
+  const id = ServicioProducto.createProducto(objProducto, file);
   res.redirect("/admin/productos");
 });
 
