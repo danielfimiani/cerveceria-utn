@@ -51,7 +51,7 @@ const update = (id_categoria, { txt_categoria, sn_habilitado }) =>
 
 const Delete = (id) =>
   pool
-    .query("DELETE FROM ??  WHERE id_producto = ?", [T_CATEGORIA, id])
+    .query("DELETE FROM ??  WHERE id_categoria = ?", [T_CATEGORIA, id])
     .then((result) => result)
     .catch((e) => e);
 
