@@ -10,7 +10,7 @@ const upload = multer(config);
 router.get("/", async (req, res) => {
   res.render("productosAdmin", {
     layout: "mainAdmin.handlebars",
-    Categorias: await Categorias.GetCategoriaslist(),
+    Categorias: await Categorias.GetCategoriasProd(),
     Productos: await Productos.GetProductoslist(),
   });
 });

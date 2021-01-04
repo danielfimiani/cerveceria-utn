@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   res.render("homeAdmin", { layout: "mainAdmin.handlebars" });
 });
 //Categorias
-router.use("/categorias", require("./productosRouter"));
+router.use("/categorias", require("./categoriasRouter"));
 //Productos
 router.use("/productos", require("./productosRouter"));
 
