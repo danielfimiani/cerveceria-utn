@@ -2,18 +2,20 @@
 // subir imagen del docente
 // insertar en la tabla docentes_imagenes
 const productoMet = require("./../models/productos");
+const path = "public/images/";
+var fs = require('fs'); 
  
 const { imgFile } = require("./../utils/fileHandler");
 
 const createProducto = async (body,file) => {
 
   try {
-    console.log(body);
-     const { insertId } = await  productoMet.create(body ); // retorna el insertId
-    console.log(file);
+     const {  insertId } = await  productoMet.create(body ); // retorna el insertId
+     if (insertId != 0) {    
      const uid = imgFile(file); // retorna el name de la imagen
-     const obj = { id_producto, uid };
-     const { insertId: idFile } = await createImages(obj);    
+     const { idFile } = await productoMet.createImages(insertId, uid);    
+     }
+
     return insertId;
   } catch (e) {
     console.error(e);
@@ -21,11 +23,17 @@ const createProducto = async (body,file) => {
 };
 
 const deleteProducto = async (id) => {
-
-    try {   
+  
+    try {     
+      
+      const rpt  = await  productoMet.Getimagen(id);     
+      var imgpath= __dirname.replace("services",path + rpt[0].image) ;
+      imgpath= imgpath.replace("/" ,"\\") ;
     
-     const repuesta = await  productoMet.Delete(id);
-     console.log(repuesta);
+      if (fs.existsSync(imgpath)) {
+        fs.unlinkSync(imgpath);
+      }
+      const repuesta = await  productoMet.Delete(id);  
      return repuesta; // retorna el delete      
     } catch (e) {
       console.error(e);
@@ -33,14 +41,25 @@ const deleteProducto = async (id) => {
   };
 
   const updateProducto = async (id, body,file) => {
+ 
 
-    try {   
+    if (file){
 
-    
-      const uid = imgFile(file); // retorna el name de la imagen    
-      
-      const { insertId } = await  productoMet.update(id,body,uid);
-       return insertId; // retorna el delete      
+      const rpt  = await  productoMet.Getimagen(id);     
+      var imgpath= __dirname.replace("services",path + rpt[0].image) ;
+      imgpath= imgpath.replace("/" ,"\\") ;
+ 
+      if (fs.existsSync(imgpath)) {
+        fs.unlinkSync(imgpath);
+      }
+
+      const uid = imgFile(file); // retorna el name de la imagen   
+      const { idFile } = await productoMet.createImages(id, uid);    
+    } 
+        
+    const { insertId } = await  productoMet.update(id,body);
+    try {       
+    return insertId; // retorna el delete      
     } catch (e) {
       console.error(e);
     }

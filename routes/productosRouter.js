@@ -1,40 +1,44 @@
 const express = require("express");
 const router = express.Router();
 const Productos = require("../models/productos");
+const Categorias = require("../models/categorias");
 const ServicioProducto = require("../services/productos");
+const multer = require("multer"); // npm i multer
+const config = { dest: `./public/tmp` };
+const upload = multer(config);
 
-router.get("/productos", function (req, res) {
-  let Usuario = Usuarios.find((Usuario) => Usuario.id_usuario == req.session.userId);
-  if (Usuario && Usuario.sn_admin == 1) {
-    res.render("productos", {
-      bAgregaNavbar: true,
-      bAdmin: true,
-      bUsuario: true,
-      Usuario: Usuario,
-      Productos: Productos,
-    });
-  } else {
-    res.redirect("/login");
-  }
+router.get("/", async (req, res) => {
+  res.render("productosAdmin", {
+    layout: "mainAdmin.handlebars",
+    Categorias: await Categorias.GetCategoriaslist(),
+    Productos: await Productos.GetProductoslist(),
+  });
 });
 
-//Login
-router.post("/", function (req, res) {
+router.get("/delete/:idproducto", function (req, res) {
+  const { idproducto } = req.params;
+  const rest = ServicioProducto.deleteProducto(idproducto);
+  res.redirect("/admin/productos");
+});
+
+router.post("/update/:idproducto",  upload.single("image"),function (req, res) {
+  const {idproducto} = req.params;
   const objProducto = req.body;
-  const objProductoimg = req.file;
-  console.log(req.body);
-  const id = ServicioProducto.createProducto(objProducto, objProductoimg);
-  res.json(id);
+  objProducto.sn_habilitado = parseInt(objProducto.sn_habilitado);
+  objProducto.sn_especial = parseInt(objProducto.sn_especial);  
+  const file = req.file;  
+  const rest = ServicioProducto.updateProducto(idproducto, objProducto, file);
+  res.redirect("/admin/productos");
 });
 
-const updateProducto = (req, res) => {
-  console.log(req);
-  const { idproducto } = req;
-  console.log(idproducto);
-  // ServicioProducto.deleteProducto(idproducto);
-  // res.json(repuesta);
-};
+router.post("/create", upload.single("image"), function (req, res) {
+  const objProducto = req.body;
+  objProducto.sn_habilitado = parseInt(objProducto.sn_habilitado);
+  objProducto.sn_especial = parseInt(objProducto.sn_especial);
+  const file = req.file;
+  
+  const id = ServicioProducto.createProducto(objProducto, file);
+  res.redirect("/admin/productos");
+});
 
-//router.get("/productos/delete/:idproducto", deleteProducto);
-//router.get("/update/:idproducto", updateProducto);
 module.exports = router;
