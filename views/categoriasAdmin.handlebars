@@ -1,0 +1,184 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">ABM de Categorias</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Exportar</a>
+    </div>
+
+    <!-- Content Row -->
+
+    <div class="row">
+
+        <!-- Area Chart -->
+        <div class="col-xl-12 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Detalle</h6>
+                    <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm m-right" data-toggle="modal"
+                        data-target="#newModal">+ Agregar</a>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <table class="table table-bordered dataTable">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-sort="ascending" aria-label="Name: activate to sort column descending"
+                                    style="width: 57px;">
+                                    ID Categoria
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-sort="ascending" aria-label="Name: activate to sort column descending"
+                                    style="width: 57px;">
+                                    Nombre
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-sort="ascending" aria-label="Name: activate to sort column descending"
+                                    style="width: 57px;">
+                                    S/N Habilitado
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                    aria-sort="ascending" aria-label="Name: activate to sort column descending"
+                                    style="width: 57px;">
+                                    Editar/Borrar
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each Categorias}}
+                            <tr role="row" class="even">
+                                <td>{{id_categoria}}</td>
+                                <td>{{txt_categoria}}</td>
+                                <td>
+                                    {{#ifCond sn_habilitado '==' 1}}
+                                    <span class="badge badge-success">Habilitado</span>
+                                    {{else}}
+                                    <span class="badge badge-danger">Inhabilitado</span>
+                                    {{/ifCond}}
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-secondary shadow-sm m-left" data-toggle="modal"
+                                        data-target="#editModal{{id_categoria}}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger shadow-sm m-left" data-toggle="modal"
+                                        data-target="#deleteModal{{id_categoria}}">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{#each Categorias}}
+    <!-- Borrar Modal-->
+    <div class="modal fade" id="deleteModal{{id_categoria}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <input type="hidden" id="id_categoria" value="">
+                <div class="modal-body">Seleccione "Eliminar" si realmente desea eliminar la categoria
+                    <strong>{{txt_categoria}}</strong>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-danger" href="/admin/categorias/delete/{{id_categoria}}">Eliminar</a>
+                    <button class="btn btn-warning" type="button" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <!-- Fin Borrar Modal-->
+
+    {{#each Categorias}}
+    <!-- Editar Modal-->
+    <div class="modal fade" id="editModal{{id_categoria}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Categoria <strong>{{txt_categoria}}</strong>
+                    </h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="/admin/Categorias/update/{{id_categoria}}">
+                        <div class="form-group">
+                            <label for="txt_categoria" class="col-form-label">Nombre: </label>
+                            <input type="text" class="form-control" id="txt_categoria" value="{{txt_categoria}}"
+                                name="txt_categoria">
+                        </div>
+                        <div class="form-group">
+                            <label for="sn_habilitado" class="col-form-label">Habilitado:</label>
+                            <select name="sn_habilitado" id="sn_habilitado" class="form-control">
+                                {{#ifCond sn_habilitado '==' 1}}
+                                <option value="1" selected="selected">SI</option>
+                                {{else}}
+                                <option value="1">SI</option>
+                                {{/ifCond}}
+
+                                {{#ifCond sn_habilitado '==' 1}}
+                                <option value="0">NO</option>
+                                {{else}}
+                                <option value="0" selected="selected">NO</option>
+                                {{/ifCond}}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <!-- Fin Editar  Modal-->
+
+    <!-- Nuevo Modal-->
+    <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva Categoria</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="/admin/Categorias/create">
+                        <div class="form-group">
+                            <label for="txt_categoria" class="col-form-label">Nombre: </label>
+                            <input type="text" class="form-control" id="txt_categoria" name="txt_categoria" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sn_habilitado" class="col-form-label">Habilitado:</label>
+                            <select name="sn_habilitado" id="sn_habilitado" class="form-control">
+                                <option value="1">SI</option>
+                                <option value="0">NO</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Nuevo Modal-->
+</div>

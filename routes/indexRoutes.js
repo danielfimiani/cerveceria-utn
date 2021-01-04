@@ -1,15 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-//HOME
+//Home
 router.use("/", require("./homeRouter"));
-//Login
-router.use("/", require("./loginRouter"));
-//Usuarios
-router.use("/usuarios", require("./usuariosRouter"));
-//ADMIN PRODUCTOS
+//DashBoard
 router.use("/admin", require("./adminRouter"));
-
-router.use("/productos", require("./productosRouter"));
 
 module.exports = router;
