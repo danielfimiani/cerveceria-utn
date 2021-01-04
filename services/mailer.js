@@ -1,17 +1,17 @@
 const nodemailer = require("nodemailer");
 
-const EnviarMail = function (ObjMail) {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "canelonesreservas@gmail.com",
-      pass: "Canelones2020",
-    },
-    tls: {
-      rejectUnauthorized: false,
-    },
-  });
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "canelonesreservas@gmail.com",
+    pass: "Canelones2020",
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
 
+const EnviarMailReserva = function (ObjMail) {
   const { people, date, time, name, email } = ObjMail;
   const mailOptions = {
     from: "Reservas Canelones",
@@ -37,4 +37,23 @@ const EnviarMail = function (ObjMail) {
   });
 };
 
-module.exports = { EnviarMail };
+const EnviarMailContacto = function (ObjMail) {
+  const { c_name, c_email, c_message } = ObjMail;
+  const mailOptions = {
+    to: "canelonesreservas@gmail.com",
+    subject: "Consulta",
+    html: `
+            <h1>De ${c_name} ${c_email}</h1>
+            <p>Consulta : </p>
+            <p>${c_message}</p>
+        `,
+  };
+
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+};
+
+module.exports = { EnviarMailReserva, EnviarMailContacto };

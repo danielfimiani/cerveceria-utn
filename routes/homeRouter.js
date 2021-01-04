@@ -10,9 +10,17 @@ router.get("/", async function (req, res) {
   });
 });
 
+//Reservas
 router.post("/reservas", async function (req, res) {
   const ObjMail = req.body;
-  Mailer.EnviarMail(ObjMail);
+  Mailer.EnviarMailReserva(ObjMail);
+  res.redirect("/");
+});
+
+//Contacto
+router.post("/contacto", async function (req, res) {
+  const ObjMail = req.body;
+  Mailer.EnviarMailContacto(ObjMail);
   res.redirect("/");
 });
 
